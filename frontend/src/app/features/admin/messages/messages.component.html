@@ -1,0 +1,36 @@
+<h1>Messages de contact</h1>
+
+<div class="messages-layout">
+  <div class="messages-list">
+    @if (messages().length === 0) {
+      <p>Aucun message pour le moment.</p>
+    }
+    @for (msg of messages(); track msg.id) {
+      <div
+        class="message-row"
+        [class.message-row--unread]="!msg.read_at"
+        [class.message-row--active]="selected()?.id === msg.id"
+        (click)="open(msg)"
+      >
+        <div>
+          <p class="message-row__name">{{ msg.name }}</p>
+          <p class="message-row__subject">{{ msg.subject || '(sans sujet)' }}</p>
+        </div>
+        <button class="btn-delete" (click)="remove(msg, $event)">Supprimer</button>
+      </div>
+    }
+  </div>
+
+  <div class="message-detail">
+    @if (selected(); as m) {
+      <h3>{{ m.subject || '(sans sujet)' }}</h3>
+      <p class="message-detail__meta">
+        {{ m.name }} — <a [href]="'mailto:' + m.email">{{ m.email }}</a>
+      </p>
+      <p class="message-detail__date">{{ m.created_at | date: 'dd/MM/yyyy HH:mm' }}</p>
+      <p class="message-detail__body">{{ m.message }}</p>
+    } @else {
+      <p class="message-detail__empty">Sélectionne un message pour le lire.</p>
+    }
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="page-header">
+  <h1>{{ isEditMode() ? "Modifier l'article" : 'Nouvel article' }}</h1>
+  <a routerLink="/admin/blog" class="btn btn--outline">Retour</a>
+</div>
+
+@if (errorMessage()) {
+  <p class="form-alert">{{ errorMessage() }}</p>
+}
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="admin-form">
+  <div class="form-group">
+    <label for="title">Titre</label>
+    <input id="title" type="text" formControlName="title" />
+  </div>
+
+  <div class="form-group">
+    <label for="excerpt">Extrait (résumé court)</label>
+    <input id="excerpt" type="text" formControlName="excerpt" />
+  </div>
+
+  <div class="form-group">
+    <label for="content">Contenu</label>
+    <textarea id="content" rows="12" formControlName="content"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>Tags</label>
+    <div class="skills-checklist">
+      @for (tag of allTags(); track tag.id) {
+        <label class="skill-check">
+          <input
+            type="checkbox"
+            [checked]="isTagChecked(tag.id)"
+            (change)="toggleTag(tag.id, $any($event.target).checked)"
+          />
+          {{ tag.name }}
+        </label>
+      }
+    </div>
+    <div class="new-tag-row">
+      <input
+        type="text"
+        placeholder="Nouveau tag..."
+        [value]="newTagName()"
+        (input)="newTagName.set($any($event.target).value)"
+      />
+      <button type="button" class="btn btn--outline btn--sm" (click)="addTag()">Ajouter</button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="cover_image">Image de couverture</label>
+    <input id="cover_image" type="file" accept="image/*" (change)="onFileSelected($event)" />
+    @if (coverPreview(); as preview) {
+      <img [src]="preview" alt="Aperçu" class="cover-preview" />
+    }
+  </div>
+
+  <div class="form-group form-group--compact">
+    <label for="status">Statut</label>
+    <select id="status" formControlName="status">
+      <option value="draft">Brouillon</option>
+      <option value="published">Publié</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn--primary" [disabled]="isSubmitting()">
+    {{ isSubmitting() ? 'Enregistrement...' : (isEditMode() ? 'Mettre à jour' : "Créer l'article") }}
+  </button>
+</form>

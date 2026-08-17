@@ -1,0 +1,27 @@
+<section class="section">
+  <div class="container">
+    <app-section-title eyebrow="Blog" title="Articles" subtitle="Notes techniques et retours d'expérience." />
+
+    @if (isLoading()) {
+      <app-loader />
+    } @else if (posts().length === 0) {
+      <p>Aucun article publié pour le moment.</p>
+    } @else {
+      <div class="blog-grid stagger">
+        @for (post of posts(); track post.id) {
+          <a [routerLink]="['/blog', post.slug]" class="card blog-card">
+            @if (post.cover_image) {
+              <div class="blog-card__image-wrap">
+                <img [src]="post.cover_image" [alt]="post.title" class="blog-card__image" />
+              </div>
+            }
+            <div class="blog-card__body">
+              <h3>{{ post.title }}</h3>
+              <p>{{ post.excerpt }}</p>
+            </div>
+          </a>
+        }
+      </div>
+    }
+  </div>
+</section>

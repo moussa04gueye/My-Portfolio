@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>Articles de blog</h1>
+  <a routerLink="/admin/blog/nouveau" class="btn btn--primary">+ Nouvel article</a>
+</div>
+
+@if (isLoading()) {
+  <p>Chargement...</p>
+} @else if (posts().length === 0) {
+  <p>Aucun article pour le moment.</p>
+} @else {
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Statut</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (post of posts(); track post.id) {
+        <tr>
+          <td>{{ post.title }}</td>
+          <td>
+            <span class="status-badge" [class.status-badge--published]="post.status === 'published'">
+              {{ post.status === 'published' ? 'Publié' : 'Brouillon' }}
+            </span>
+          </td>
+          <td class="admin-table__actions">
+            <a [routerLink]="['/admin/blog', post.id, 'edit']" class="btn btn--outline btn--sm">Éditer</a>
+            <button class="btn-delete" (click)="remove(post)">Supprimer</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

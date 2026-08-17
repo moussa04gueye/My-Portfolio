@@ -1,0 +1,25 @@
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a routerLink="/" class="navbar__brand" (click)="closeMenu()">Moussa Gueye</a>
+
+    <nav class="navbar__links" [class.navbar__links--open]="isMenuOpen()">
+      @for (link of links; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="navbar__link--active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          class="navbar__link"
+          (click)="closeMenu()"
+        >
+          {{ link.label }}
+        </a>
+      }
+    </nav>
+
+    <button class="navbar__toggle" (click)="toggleMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>

@@ -1,0 +1,46 @@
+@if (isLoading()) {
+  <app-loader />
+} @else if (notFound()) {
+  <div class="container section">
+    <p>Projet introuvable.</p>
+    <a routerLink="/projets" class="btn btn--outline">Retour aux projets</a>
+  </div>
+} @else if (project(); as p) {
+  <section class="section">
+    <div class="container project-detail">
+      <a routerLink="/projets" class="project-detail__back">&larr; Tous les projets</a>
+
+      <h1>{{ p.title }}</h1>
+      <p class="project-detail__summary">{{ p.summary }}</p>
+
+      <div class="project-detail__tags">
+        @for (skill of p.skills; track skill.id) {
+          <app-badge [label]="skill.name" variant="accent" />
+        }
+      </div>
+
+      <div class="project-detail__actions">
+        @if (p.demo_url) {
+          <a [href]="p.demo_url" target="_blank" rel="noopener" class="btn btn--primary">Voir la démo</a>
+        }
+        @if (p.repo_url) {
+          <a [href]="p.repo_url" target="_blank" rel="noopener" class="btn btn--outline">Code source</a>
+        }
+      </div>
+
+      @if (p.cover_image) {
+        <img [src]="p.cover_image" [alt]="p.title" class="project-detail__cover" />
+      }
+
+      <div class="project-detail__description" [innerHTML]="p.description"></div>
+
+      @if (p.images.length > 0) {
+        <div class="project-detail__gallery">
+          @for (image of p.images; track image.id) {
+            <img [src]="image.url" [alt]="p.title" />
+          }
+        </div>
+      }
+    </div>
+  </section>
+}

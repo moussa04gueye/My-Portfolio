@@ -1,0 +1,68 @@
+.admin-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  background: var(--color-bg-alt);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+}
+
+.admin-sidebar__brand {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-accent);
+  margin-bottom: var(--space-8);
+}
+
+.admin-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+}
+
+.admin-sidebar__link {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-muted);
+  transition: all var(--transition);
+}
+
+.admin-sidebar__link:hover {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.admin-sidebar__link--active {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--color-accent);
+}
+
+.admin-sidebar__footer {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+}
+
+.admin-sidebar__user {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.admin-sidebar__logout {
+  font-size: var(--fs-sm);
+  color: var(--color-danger);
+  font-weight: var(--fw-medium);
+}
+
+.admin-content {
+  padding: var(--space-8);
+  overflow-x: auto;
+}

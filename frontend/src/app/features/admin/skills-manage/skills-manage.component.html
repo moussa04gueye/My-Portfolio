@@ -1,0 +1,50 @@
+<h1>Compétences</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="inline-form">
+  <input type="text" formControlName="name" placeholder="Nom (ex: Python)" />
+
+  <select formControlName="category">
+    <option value="langage">Langage</option>
+    <option value="framework">Framework</option>
+    <option value="systeme">Système</option>
+    <option value="securite">Sécurité</option>
+    <option value="devops">DevOps</option>
+    <option value="outil">Outil</option>
+    <option value="reseaux">Réseaux</option>
+    <option value="base de données">Base de données</option>
+    <option value="autre">Autre</option>
+  </select>
+
+  <input type="number" formControlName="level" min="1" max="5" />
+
+  <button type="submit" class="btn btn--primary btn--sm">
+    {{ editingId() ? 'Mettre à jour' : 'Ajouter' }}
+  </button>
+  @if (editingId()) {
+    <button type="button" class="btn btn--outline btn--sm" (click)="cancelEdit()">Annuler</button>
+  }
+</form>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Catégorie</th>
+      <th>Niveau</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (skill of skills(); track skill.id) {
+      <tr>
+        <td>{{ skill.name }}</td>
+        <td>{{ skill.category }}</td>
+        <td>{{ skill.level }}/5</td>
+        <td class="admin-table__actions">
+          <button class="btn btn--outline btn--sm" (click)="edit(skill)">Éditer</button>
+          <button class="btn-delete" (click)="remove(skill)">Supprimer</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

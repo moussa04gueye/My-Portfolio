@@ -1,0 +1,22 @@
+<h1>Tableau de bord</h1>
+
+@if (stats(); as s) {
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-card__value">{{ s.projects_count }}</span>
+      <span class="stat-card__label">Projets total</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-card__value">{{ s.projects_published }}</span>
+      <span class="stat-card__label">Projets publiés</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-card__value">{{ s.blog_posts_count }}</span>
+      <span class="stat-card__label">Articles de blog</span>
+    </div>
+    <div class="stat-card stat-card--highlight">
+      <span class="stat-card__value">{{ s.unread_messages_count }}</span>
+      <span class="stat-card__label">Messages non lus</span>
+    </div>
+  </div>
+}

@@ -1,0 +1,84 @@
+<div class="page-header">
+  <h1>{{ isEditMode() ? 'Modifier le projet' : 'Nouveau projet' }}</h1>
+  <a routerLink="/admin/projets" class="btn btn--outline">Retour</a>
+</div>
+
+@if (errorMessage()) {
+  <p class="form-alert">{{ errorMessage() }}</p>
+}
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="admin-form">
+  <div class="form-group">
+    <label for="title">Titre</label>
+    <input id="title" type="text" formControlName="title" />
+  </div>
+
+  <div class="form-group">
+    <label for="summary">Résumé court</label>
+    <input id="summary" type="text" formControlName="summary" />
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description complète</label>
+    <textarea id="description" rows="8" formControlName="description"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="stackInput">Stack technique (séparée par des virgules)</label>
+    <input id="stackInput" type="text" formControlName="stackInput" placeholder="Laravel, Angular, MySQL" />
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="repo_url">Lien du code (optionnel)</label>
+      <input id="repo_url" type="url" formControlName="repo_url" placeholder="https://github.com/..." />
+    </div>
+    <div class="form-group">
+      <label for="demo_url">Lien de la démo (optionnel)</label>
+      <input id="demo_url" type="url" formControlName="demo_url" placeholder="https://..." />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Compétences liées</label>
+    <div class="skills-checklist">
+      @for (skill of allSkills(); track skill.id) {
+        <label class="skill-check">
+          <input
+            type="checkbox"
+            [checked]="isSkillChecked(skill.id)"
+            (change)="toggleSkill(skill.id, $any($event.target).checked)"
+          />
+          {{ skill.name }}
+        </label>
+      }
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="cover_image">Image de couverture</label>
+    <input id="cover_image" type="file" accept="image/*" (change)="onFileSelected($event)" />
+    @if (coverPreview(); as preview) {
+      <img [src]="preview" alt="Aperçu" class="cover-preview" />
+    }
+  </div>
+
+  <div class="form-row form-row--inline">
+    <label class="checkbox-inline">
+      <input type="checkbox" formControlName="is_featured" />
+      Mettre en avant sur la page d'accueil
+    </label>
+
+    <div class="form-group form-group--compact">
+      <label for="status">Statut</label>
+      <select id="status" formControlName="status">
+        <option value="draft">Brouillon</option>
+        <option value="published">Publié</option>
+      </select>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn--primary" [disabled]="isSubmitting()">
+    {{ isSubmitting() ? 'Enregistrement...' : (isEditMode() ? 'Mettre à jour' : 'Créer le projet') }}
+  </button>
+</form>

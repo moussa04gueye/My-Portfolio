@@ -1,0 +1,52 @@
+<section class="section">
+  <div class="container about-header">
+    <app-section-title eyebrow="Parcours" title="À propos de moi" />
+    <a [href]="cvUrl" class="btn btn--primary">Télécharger mon CV</a>
+  </div>
+
+  @if (isLoading()) {
+    <app-loader />
+  } @else {
+    <div class="container about-columns">
+      <div class="about-column">
+        <h3>Expériences</h3>
+        <ul class="timeline">
+          @for (exp of experiences(); track exp.id) {
+            <li class="timeline__item">
+              <span class="timeline__period">
+                {{ exp.start_date | date: 'MMM yyyy' : '' : 'fr-FR' }}
+                —
+                {{ exp.end_date ? (exp.end_date | date: 'MMM yyyy' : '' : 'fr-FR') : 'Présent' }}
+              </span>
+              <h4>{{ exp.title }}</h4>
+              <p class="timeline__meta">{{ exp.company }} @if (exp.location) { · {{ exp.location }} }</p>
+              @if (exp.description) {
+                <p class="timeline__desc">{{ exp.description }}</p>
+              }
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="about-column">
+        <h3>Formation</h3>
+        <ul class="timeline">
+          @for (ed of education(); track ed.id) {
+            <li class="timeline__item">
+              <span class="timeline__period">
+                {{ ed.start_date | date: 'MMM yyyy' : '' : 'fr-FR' }}
+                —
+                {{ ed.end_date ? (ed.end_date | date: 'MMM yyyy' : '' : 'fr-FR') : 'Présent' }}
+              </span>
+              <h4>{{ ed.degree }}</h4>
+              <p class="timeline__meta">{{ ed.school }} @if (ed.field) { · {{ ed.field }} }</p>
+              @if (ed.description) {
+                <p class="timeline__desc">{{ ed.description }}</p>
+              }
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  }
+</section>

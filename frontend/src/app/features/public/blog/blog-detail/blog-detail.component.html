@@ -1,0 +1,25 @@
+@if (isLoading()) {
+  <app-loader />
+} @else if (notFound()) {
+  <div class="container section">
+    <p>Article introuvable.</p>
+    <a routerLink="/blog" class="btn btn--outline">Retour au blog</a>
+  </div>
+} @else if (post(); as p) {
+  <article class="section">
+    <div class="container blog-detail">
+      <a routerLink="/blog" class="blog-detail__back">&larr; Tous les articles</a>
+
+      <h1>{{ p.title }}</h1>
+      @if (p.published_at) {
+        <p class="blog-detail__date">{{ p.published_at | date: 'longDate' : '' : 'fr-FR' }}</p>
+      }
+
+      @if (p.cover_image) {
+        <img [src]="p.cover_image" [alt]="p.title" class="blog-detail__cover" />
+      }
+
+      <div class="blog-detail__content" [innerHTML]="p.content"></div>
+    </div>
+  </article>
+}

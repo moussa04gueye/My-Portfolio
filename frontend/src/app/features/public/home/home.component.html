@@ -1,0 +1,135 @@
+<section class="hero">
+  <div class="blob blob--accent hero__blob"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__text fade-in-up">
+     <div class="hero__eyebrow-wrap">
+  <span class="hero__eyebrow">Administration Systèmes, Sécurité &amp; DevOps</span>
+</div>
+      <h1 class="hero__title animated-text">Je sécurise, automatise et déploie des infrastructures fiables. </h1>
+      <p class="hero__subtitle">
+        Étudiant en Licence 3 Mathématiques, Cryptographie et Sécurité (TDSI) à l'UCAD. Expérience
+        en analyse SOC, administration systèmes Linux/Windows et DevOps — je conçois aussi des
+        applications web complètes avec Laravel et Angular.
+        
+      </p>
+      <div class="hero__actions">
+        <a routerLink="/projets" class="btn btn--primary">Voir mes projets</a>
+        <a routerLink="/contact" class="btn btn--primary">Me contacter</a>
+        <a [href]="cvUrl" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Télécharger mon CV</a>
+      </div>
+
+      <div class="hero__socials">
+        <a href="https://github.com/moussa04gueye" target="_blank" rel="noopener" class="icon-badge" aria-label="GitHub">GH</a>
+        <a href="https://www.linkedin.com/in/moussa-gueye-b21476295" target="_blank" rel="noopener" class="icon-badge" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+
+    <div class="hero__photo fade-in-up">
+      <div class="hero__photo-frame">
+          <div class="profile-ring" style="width:320px; height:320px;">
+            @for (photo of photos; track photo; let i = $index) {
+              <img
+                [src]="photo"
+                loading="lazy"
+                [alt]="'Photo de profil ' + (i + 1)"
+                [class.is-visible]="activeIndex() === i"
+              />
+            }
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--direction">
+  <div class="container">
+    <app-section-title
+      eyebrow="Direction"
+      title="Ma direction professionnelle"
+      subtitle="Je construis mon parcours vers la cybersécurité, l'administration systèmes et l'automatisation DevOps."
+    />
+
+    <div class="direction-grid">
+      <article class="direction-card">
+        <h3 class="btn btn--primary">Cybersécurité</h3>
+        <p>Mettre en place des défenses solides, analyser des menaces et protéger les systèmes dans un contexte professionnel.</p>
+      </article>
+      <article class="direction-card">
+        <h3 class="btn btn--primary">Administration Systèmes</h3>
+        <p>Maintenir des environnements Linux et Windows stables, sécurisés et performants pour les utilisateurs et les services.</p>
+      </article>
+      <article class="direction-card">
+        <h3 class="btn btn--primary">DevOps</h3>
+        <p>Automatiser le déploiement, surveiller l'infrastructure et accélérer les livraisons avec un focus sur la fiabilité.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <app-section-title
+      eyebrow="Sélection"
+      title="Projets récents"
+      subtitle="Quelques réalisations qui illustrent la façon dont je travaille."
+    />
+
+    @if (isLoading()) {
+      <app-loader />
+    } @else if (featuredProjects().length === 0) {
+      <p>Aucun projet mis en avant pour le moment.</p>
+    } @else {
+      <div class="project-grid stagger">
+        @for (project of featuredProjects(); track project.id) {
+          <a [routerLink]="['/projets', project.slug]" class="card project-card" appScrollReveal>
+            @if (project.cover_image) {
+              <div class="project-card__image-wrap">
+                <img loading="lazy" [src]="project.cover_image" [alt]="project.title" class="project-card__image" />
+              </div>
+            }
+            <div class="project-card__body">
+              <h3>{{ project.title }}</h3>
+              <p>{{ project.summary }}</p>
+              <div class="project-card__tags">
+                @for (skill of project.skills.slice(0, 3); track skill.id) {
+                  <app-badge [label]="skill.name" />
+                }
+              </div>
+            </div>
+          </a>
+        }
+      </div>
+    }
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container" appScrollReveal>
+    <app-section-title eyebrow="Stack" title="Compétences techniques" />
+    <div class="stack-search">
+      <input
+        class="stack-search__input"
+        type="search"
+        placeholder="Rechercher une compétence..."
+        [value]="searchTerm()"
+        (input)="searchTerm.set($event.target.value)"
+        aria-label="Rechercher une compétence"
+      />
+    </div>
+
+    <div class="skills-grid">
+      @for (skill of filteredSkills(); track skill.id) {
+        <div class="skill-item">
+          <span class="skill-item__name">{{ skill.name }}</span>
+          <div class="skill-item__bar">
+            <div class="skill-item__fill" [style.width.%]="skill.level * 20"></div>
+          </div>
+        </div>
+      }
+      @if (filteredSkills().length === 0) {
+        <p>Aucune compétence trouvée.</p>
+      }
+    </div>
+  </div>
+</section>

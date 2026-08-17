@@ -1,0 +1,26 @@
+.blog-detail {
+  max-width: 720px;
+}
+
+.blog-detail__back {
+  display: inline-block;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+}
+
+.blog-detail__date {
+  font-size: var(--fs-sm);
+  margin: var(--space-2) 0 var(--space-6);
+}
+
+.blog-detail__cover {
+  width: 100%;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-8);
+}
+
+.blog-detail__content {
+  color: var(--color-text);
+  line-height: var(--lh-normal);
+}

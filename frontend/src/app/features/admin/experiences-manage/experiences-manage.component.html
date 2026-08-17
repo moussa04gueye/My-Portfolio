@@ -1,0 +1,79 @@
+<div class="page-header">
+  <h1>Expériences</h1>
+  <button class="btn btn--primary" (click)="newForm()">+ Nouvelle expérience</button>
+</div>
+
+@if (showForm()) {
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="admin-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Titre</label>
+        <input type="text" formControlName="title" />
+      </div>
+      <div class="form-group">
+        <label>Entreprise</label>
+        <input type="text" formControlName="company" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Lieu</label>
+        <input type="text" formControlName="location" />
+      </div>
+      <div class="form-group">
+        <label>Type</label>
+        <select formControlName="type">
+          <option value="stage">Stage</option>
+          <option value="emploi">Emploi</option>
+          <option value="projet">Projet</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Date de début</label>
+        <input type="date" formControlName="start_date" />
+      </div>
+      <div class="form-group">
+        <label>Date de fin (vide = en cours)</label>
+        <input type="date" formControlName="end_date" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea rows="6" formControlName="description"></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn--primary">{{ editingId() ? 'Mettre à jour' : 'Créer' }}</button>
+      <button type="button" class="btn btn--outline" (click)="cancel()">Annuler</button>
+    </div>
+  </form>
+}
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Entreprise</th>
+      <th>Période</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (exp of experiences(); track exp.id) {
+      <tr>
+        <td>{{ exp.title }}</td>
+        <td>{{ exp.company }}</td>
+        <td>{{ exp.start_date }} — {{ exp.end_date || 'Présent' }}</td>
+        <td class="admin-table__actions">
+          <button class="btn btn--outline btn--sm" (click)="edit(exp)">Éditer</button>
+          <button class="btn-delete" (click)="remove(exp)">Supprimer</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
