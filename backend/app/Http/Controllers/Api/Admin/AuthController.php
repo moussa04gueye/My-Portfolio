@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -16,22 +16,28 @@ class AuthController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        if (! Auth::attempt($credentials, true)) {
+        $user = \App\Models\User::where('email', $credentials['email'])->first();
+
+        if (! $user || ! Hash::check($credentials['password'], $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['Identifiants incorrects.'],
             ]);
         }
 
-        $request->session()->regenerate();
+        // Un seul token actif à la fois pour l'admin (optionnel mais plus propre)
+        $user->tokens()->delete();
 
-        return response()->json(['user' => Auth::user()]);
+        $token = $user->createToken('admin-spa')->plainTextToken;
+
+        return response()->json([
+            'user' => $user,
+            'token' => $token,
+        ]);
     }
 
     public function logout(Request $request)
     {
-        Auth::guard('web')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        $request->user()->currentAccessToken()->delete();
 
         return response()->json(['message' => 'Déconnecté.']);
     }
