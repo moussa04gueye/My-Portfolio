@@ -1,22 +1,24 @@
-import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { catchError, map, of } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
-/**
- * Attache le header Authorization: Bearer <token> sur les requêtes vers
- * l'API quand un token admin est présent (auth Sanctum par token, adaptée
- * au déploiement multi-domaines : Angular et Laravel sur des hébergeurs
- * séparés n'ont pas de domaine commun pour partager un cookie de session).
- */
-export const credentialsInterceptor: HttpInterceptorFn = (req, next) => {
+export const adminGuard: CanActivateFn = () => {
   const auth = inject(AuthService);
-  const token = auth.getToken();
+  const router = inject(Router);
 
-  if (token) {
-    req = req.clone({
-      setHeaders: { Authorization: `Bearer ${token}` },
-    });
+  if (!auth.getToken()) {
+    router.navigate(['/admin/login']);
+    return false;
   }
 
-  return next(req);
+  // Vérifie que le token est toujours valide côté serveur.
+  return auth.me().pipe(
+    map(() => true),
+    catchError(() => {
+      auth.clearSession();
+      router.navigate(['/admin/login']);
+      return of(false);
+    })
+  );
 };
