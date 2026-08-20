@@ -18,6 +18,7 @@ RUN composer install --optimize-autoloader --no-dev --no-interaction
 EXPOSE 8080
 
 CMD php artisan migrate --force \
+    && php artisan db:seed --force \
     && php artisan config:cache \
     && php artisan route:cache \
     && php artisan storage:link \
