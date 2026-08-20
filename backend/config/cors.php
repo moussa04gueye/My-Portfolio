@@ -5,9 +5,11 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'https://my-portfolio-l2dk.onrender.com')],
+    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:4200')],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => [
+        '#^https://my-portfolio-[a-z0-9]+-moussa17\.vercel\.app$#',
+    ],
 
     'allowed_headers' => ['*'],
 
