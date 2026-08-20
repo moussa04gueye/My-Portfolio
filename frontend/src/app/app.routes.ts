@@ -21,7 +21,7 @@ import { EducationManageComponent } from './features/admin/education-manage/educ
 import { MessagesComponent } from './features/admin/messages/messages.component';
 import { SettingsComponent } from './features/admin/settings/settings.component';
 
-import { adminGuard } from './core/guards/Admin';
+import { adminGuard } from './core/guards/admin';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
