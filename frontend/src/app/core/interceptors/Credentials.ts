@@ -1,23 +1,24 @@
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { catchError, map, of } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
-import { HttpInterceptorFn } from '@angular/common/http';
+export const adminGuard: CanActivateFn = () => {
+  const auth = inject(AuthService);
+  const router = inject(Router);
 
-function getCookie(name: string): string | null {
-  const match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
-  return match ? decodeURIComponent(match[1]) : null;
-}
-
-const SAFE_METHODS = ['GET', 'HEAD', 'OPTIONS'];
-export const credentialsInterceptor: HttpInterceptorFn = (req, next) => {
-  let cloned = req.clone({ withCredentials: true });
-
-  if (!SAFE_METHODS.includes(req.method)) {
-    const token = getCookie('XSRF-TOKEN');
-    if (token) {
-      cloned = cloned.clone({
-        setHeaders: { 'X-XSRF-TOKEN': token },
-      });
-    }
+  if (!auth.getToken()) {
+    router.navigate(['/admin/login']);
+    return false;
   }
 
-  return next(cloned);
+  // Vérifie que le token est toujours valide côté serveur.
+  return auth.me().pipe(
+    map(() => true),
+    catchError(() => {
+      auth.clearSession();
+      router.navigate(['/admin/login']);
+      return of(false);
+    })
+  );
 };
