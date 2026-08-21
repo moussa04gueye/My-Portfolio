@@ -10,7 +10,10 @@ class ExperienceSeeder extends Seeder
     public function run(): void
     {
         Experience::updateOrCreate(
-            ['title' => 'Administrateur système et Sécurité (Junior)', 'company' => 'La Poste Sn'],
+            [
+                'title' => 'Administrateur système et Sécurité (Junior)',
+                'company' => 'La Poste Sn',
+            ],
             [
                 'location' => 'Dakar',
                 'start_date' => '2025-09-01',
@@ -19,9 +22,15 @@ class ExperienceSeeder extends Seeder
                 'order' => 0,
                 'description' => <<<'TXT'
 Analyste SOC : analyse des logs (SIEM), détection et réponse aux incidents (EDR), threat intelligence, investigation. Outils utilisés : Wazuh, Elastic Stack (ELK), Cortex XDR, MISP, TheHive, Suricata, Yara, Sysmon, Auditd, VirusTotal.
-TXT,
+TXT
+            ]
+        );
+
+        Experience::updateOrCreate(
+            [
+                'title' => 'Analyste SOC/Sécurité',
+                'company' => 'La Poste Sn',
             ],
-             ['title' => 'Analyste SOC/Sécurité ', 'company' => 'La Poste Sn'],
             [
                 'location' => 'Dakar',
                 'start_date' => '2026-03-02',
@@ -29,11 +38,9 @@ TXT,
                 'type' => 'stage',
                 'order' => 0,
                 'description' => <<<'TXT'
-Stagiaire en Sécurité des Systèmes d'Informations . Membre des responsables charger de la mise en place d'un SOC Interne Robuste . analyse des logs (SIEM), détection et réponse aux incidents (EDR), threat intelligence, investigation. Outils utilisés : Wazuh, Elastic Stack (ELK), Cortex XDR, MISP, TheHive, Suricata, Yara, Sysmon, Auditd, VirusTotal.......
-TXT,
+Stagiaire en Sécurité des Systèmes d'Informations. Membre des responsables chargés de la mise en place d'un SOC interne robuste. Analyse des logs (SIEM), détection et réponse aux incidents (EDR), threat intelligence, investigation. Outils utilisés : Wazuh, Elastic Stack (ELK), Cortex XDR, MISP, TheHive, Suricata, Yara, Sysmon, Auditd, VirusTotal.
+TXT
             ]
-
-
         );
     }
 }
