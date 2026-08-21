@@ -75,11 +75,8 @@
   height: 400px;
   border-radius: 50%;
   padding: 5px;
-  
-  /* On enlève la bordure simple */
   border: none;
 
-  /* Fond servant à créer l'anneau dégradé */
   background: linear-gradient(
     135deg,
     #00f5ff,
@@ -89,7 +86,6 @@
     #00f5ff
   );
 
-  /* Halo lumineux (reduit pour perf) */
   box-shadow:
     0 0 10px rgba(0, 245, 255, 0.7),
     0 0 28px rgba(0, 245, 255, 0.38),
@@ -100,7 +96,6 @@
 }
 
 
-/* Anneau extérieur lumineux */
 .hero__photo-frame::before {
   content: "";
   position: absolute;
@@ -115,16 +110,12 @@
     #ff4fd8,
     #00f5ff
   );
-
-  /* softer and less costly blur */
   filter: blur(9px);
   opacity: 0.36;
 
   z-index: -1;
 }
 
-
-/* Deuxième cercle pour renforcer le contour */
 .hero__photo-frame::after {
   content: "";
   position: absolute;
@@ -142,7 +133,6 @@
 }
 
 
-/* Image */
 .hero__photo-frame img {
   position: absolute;
   inset: 4px;
@@ -164,13 +154,11 @@
 }
 
 
-/* Image visible */
 .hero__photo-frame img.is-visible {
   opacity: 1;
   transform: scale(1);
 }
 
-/* Fallback: ensure the first photo is visible if JS state doesn't set .is-visible */
 .hero__photo-frame img:first-of-type {
   opacity: 1;
   transform: scale(1);
