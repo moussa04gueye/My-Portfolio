@@ -63,7 +63,7 @@ class ProjectSeeder extends Seeder
                 'is_featured' => true,
                 'order' => 4,
                 'image_asset' => 'soc-incidents.jpg',
-            ]
+            ],
             [
                 'title' => 'Developpement d\'une application web pour la visibilite de vente de meubles',
                 'summary' => 'Ce projet consiste à développer une application web pour améliorer la visibilité des ventes de meubles.',
