@@ -11,6 +11,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class NavbarComponent {
   isMenuOpen = signal(false);
+  theme = signal<'dark' | 'light'>('dark');
 
   links = [
     { path: '/', label: 'Accueil' },
@@ -20,11 +21,31 @@ export class NavbarComponent {
     { path: '/contact', label: 'Contact' },
   ];
 
+  constructor() {
+    const savedTheme = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
+    const initialTheme = savedTheme === 'light' ? 'light' : 'dark';
+    this.setTheme(initialTheme, false);
+  }
+
   toggleMenu(): void {
     this.isMenuOpen.update((v) => !v);
   }
 
   closeMenu(): void {
     this.isMenuOpen.set(false);
+  }
+
+  toggleTheme(): void {
+    const nextTheme = this.theme() === 'dark' ? 'light' : 'dark';
+    this.setTheme(nextTheme, true);
+  }
+
+  private setTheme(mode: 'dark' | 'light', persist = true): void {
+    this.theme.set(mode);
+    document.body.setAttribute('data-theme', mode);
+
+    if (persist && typeof localStorage !== 'undefined') {
+      localStorage.setItem('theme', mode);
+    }
   }
 }

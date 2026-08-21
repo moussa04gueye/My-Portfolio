@@ -1,6 +1,17 @@
 <header class="navbar">
   <div class="container navbar__inner">
-    <a routerLink="/" class="navbar__brand" (click)="closeMenu()">Moussa Gueye</a>
+    <div class="navbar__brand-group">
+      <a routerLink="/" class="navbar__brand" (click)="closeMenu()">root@Moussa Gueye</a>
+
+      <button
+        type="button"
+        class="navbar__theme-toggle"
+        (click)="toggleTheme()"
+        [attr.aria-label]="theme() === 'dark' ? 'Activer le thème clair' : 'Revenir au thème sombre'"
+      >
+        {{ theme() === 'dark' ? '🛡️' : '' }}
+      </button>
+    </div>
 
     <nav class="navbar__links" [class.navbar__links--open]="isMenuOpen()">
       @for (link of links; track link.path) {
