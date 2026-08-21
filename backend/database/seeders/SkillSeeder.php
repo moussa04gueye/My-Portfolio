@@ -10,41 +10,37 @@ class SkillSeeder extends Seeder
     public function run(): void
     {
         $skills = [
-            // Langages
             ['name' => 'Python', 'category' => 'langage', 'level' => 4],
+            ['name' => 'JavaScript', 'category' => 'langage', 'level' => 4],
+            ['name' => 'Java', 'category' => 'langage', 'level' => 5],
+            ['name' => 'MySQL', 'category' => 'base de données', 'level' => 5],
+            ['name' => 'Keycloak', 'category' => 'securite', 'level' => 3],
+            ['name' => 'SQLServer', 'category' => 'base de données', 'level' => 4],
+            ['name' => 'OpenSSL', 'category' => 'securite', 'level' => 3],
+            ['name' => 'Angular', 'category' => 'framework', 'level' => 3],
             ['name' => 'Bash', 'category' => 'langage', 'level' => 4],
             ['name' => 'C', 'category' => 'langage', 'level' => 3],
             ['name' => 'PHP', 'category' => 'langage', 'level' => 3],
-            ['name' => 'PowerShell', 'category' => 'langage', 'level' => 3],
-
-            // Frameworks / Web
-            ['name' => 'Laravel', 'category' => 'framework', 'level' => 3],
-            ['name' => 'HTML / CSS', 'category' => 'framework', 'level' => 3],
+            ['name' => 'PowerShell', 'category' => 'outil', 'level' => 4],
+            ['name' => 'Laravel', 'category' => 'framework', 'level' => 5],
+            ['name' => 'HTML / CSS', 'category' => 'framework', 'level' => 5],
             ['name' => 'Bootstrap', 'category' => 'framework', 'level' => 3],
-
-            // Administration systèmes & réseaux
-            ['name' => 'Linux (RHEL, Ubuntu, Debian)', 'category' => 'systeme', 'level' => 4],
+            ['name' => 'Linux (RHEL, Ubuntu, Debian)', 'category' => 'systeme', 'level' => 5],
             ['name' => 'Windows Server', 'category' => 'systeme', 'level' => 3],
-            ['name' => 'TCP/IP & Réseaux', 'category' => 'systeme', 'level' => 4],
-            ['name' => 'SSH / DNS / DHCP', 'category' => 'systeme', 'level' => 4],
-
-            // Sécurité / SOC
-            ['name' => 'Wazuh', 'category' => 'securite', 'level' => 3],
+            ['name' => 'TCP/IP & Réseaux', 'category' => 'reseaux', 'level' => 4],
+            ['name' => 'SSH / DNS / DHCP', 'category' => 'reseaux', 'level' => 5],
+            ['name' => 'Wazuh', 'category' => 'securite', 'level' => 5],
             ['name' => 'Elastic Stack (ELK)', 'category' => 'securite', 'level' => 3],
             ['name' => 'Suricata', 'category' => 'securite', 'level' => 3],
-            ['name' => 'TheHive / MISP', 'category' => 'securite', 'level' => 3],
-            ['name' => 'Cortex XDR', 'category' => 'securite', 'level' => 2],
-
-            // DevOps
-            ['name' => 'Docker', 'category' => 'devops', 'level' => 3],
+            ['name' => 'TheHive / MISP', 'category' => 'securite', 'level' => 5],
+            ['name' => 'Cortex XDR', 'category' => 'securite', 'level' => 5],
+            ['name' => 'Docker', 'category' => 'devops', 'level' => 5],
             ['name' => 'Jenkins', 'category' => 'devops', 'level' => 3],
             ['name' => 'GitLab CI/CD', 'category' => 'devops', 'level' => 3],
-            ['name' => 'Shuffle', 'category' => 'devops', 'level' => 3],
+            ['name' => 'Shuffle', 'category' => 'devops', 'level' => 5],
             ['name' => 'Grafana / Prometheus', 'category' => 'devops', 'level' => 3],
             ['name' => 'SonarQube', 'category' => 'devops', 'level' => 2],
             ['name' => 'Git', 'category' => 'outil', 'level' => 4],
-
-            // En cours d'apprentissage
             ['name' => 'Machine Learning', 'category' => 'autre', 'level' => 1],
         ];
 

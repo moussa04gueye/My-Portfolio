@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             SkillSeeder::class,
             ExperienceSeeder::class,
             EducationSeeder::class,
+            BlogpostSeeder::class,
         ]);
     }
 }
