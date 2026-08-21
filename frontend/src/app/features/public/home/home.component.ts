@@ -43,8 +43,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   photos = ['Profil.jpeg', 'prof2.jpeg', 'prof5.jpeg'];
   cvUrl = '/cv.pdf';
 
-  // no per-letter initialization — title behaves as a normal element
-
   ngOnInit(): void {
     this.projectService.getAll(true).subscribe({
       next: (res) => this.featuredProjects.set(res.data),
