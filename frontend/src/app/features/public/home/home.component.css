@@ -117,8 +117,14 @@
   overflow: visible;
 }
 
+<<<<<<< HEAD
 
+<<<<<<< HEAD
 /* Anneau extérieur lumineux */
+=======
+=======
+>>>>>>> 64a97eb (the last seetings)
+>>>>>>> ebe62ba (the last seetings)
 .hero__photo-frame::before {
   content: "";
   position: absolute;
@@ -133,8 +139,15 @@
     #ff4fd8,
     #00f5ff
   );
+<<<<<<< HEAD
 
   /* softer and less costly blur */
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 64a97eb (the last seetings)
+>>>>>>> ebe62ba (the last seetings)
   filter: blur(9px);
   opacity: 0.36;
 
@@ -159,8 +172,14 @@
   z-index: 3;
 }
 
+<<<<<<< HEAD
 
+<<<<<<< HEAD
 /* Image */
+=======
+=======
+>>>>>>> 64a97eb (the last seetings)
+>>>>>>> ebe62ba (the last seetings)
 .hero__photo-frame img {
   position: absolute;
   inset: 4px;
