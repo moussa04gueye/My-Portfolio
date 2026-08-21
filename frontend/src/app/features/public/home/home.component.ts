@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   });
   isLoading = signal(true);
   activeIndex = signal(0);
-  photos = ['Profil.jpeg', 'prof2.jpeg', 'prof4b.jpeg', 'prof5.jpeg'];
+  photos = ['Profil.jpeg', 'prof2.jpeg', 'prof5.jpeg'];
   cvUrl = '/cv.pdf';
 
   // no per-letter initialization — title behaves as a normal element
