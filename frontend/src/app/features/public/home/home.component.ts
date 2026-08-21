@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   });
   isLoading = signal(true);
   activeIndex = signal(0);
-  photos = ['Profil.jpeg', 'prof2.jpeg', 'prof5.jpeg','P11.png'];
+  photos = ['Profil.jpeg', 'prof2.jpeg', 'prof5.jpeg','P111.png'];
   cvUrl = '/cv.pdf';
   typedText = signal('');
 
