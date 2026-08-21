@@ -42,6 +42,38 @@ export class HomeComponent implements OnInit, OnDestroy {
   activeIndex = signal(0);
   photos = ['Profil.jpeg', 'prof2.jpeg', 'prof5.jpeg'];
   cvUrl = '/cv.pdf';
+  typedText = signal('');
+
+  private readonly heroText = 'Je sécurise, automatise et déploie des infrastructures fiables.';
+  private typeTimeout?: number;
+  private typeIndex = 0;
+  private isDeleting = false;
+
+  private startTypewriter(): void {
+    const speed = this.isDeleting ? 45 : 95;
+
+    this.typeTimeout = window.setTimeout(() => {
+      if (!this.isDeleting) {
+        this.typeIndex += 1;
+        this.typedText.set(this.heroText.slice(0, this.typeIndex));
+
+        if (this.typeIndex >= this.heroText.length) {
+          this.isDeleting = true;
+          this.typeTimeout = window.setTimeout(() => this.startTypewriter(), 1200);
+          return;
+        }
+      } else {
+        this.typeIndex -= 1;
+        this.typedText.set(this.heroText.slice(0, this.typeIndex));
+
+        if (this.typeIndex <= 0) {
+          this.isDeleting = false;
+        }
+      }
+
+      this.startTypewriter();
+    }, speed);
+  }
 
   ngOnInit(): void {
     this.projectService.getAll(true).subscribe({
@@ -66,5 +98,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.photoTimer) {
       window.clearInterval(this.photoTimer);
     }
+
+    if (this.typeTimeout) {
+      window.clearTimeout(this.typeTimeout);
+    }
+  }
+
+  private initializeHeroText(): void {
+    this.typedText.set('');
+    this.typeIndex = 0;
+    this.isDeleting = false;
+    this.startTypewriter();
+  }
+
+  constructor() {
+    this.initializeHeroText();
   }
 }
