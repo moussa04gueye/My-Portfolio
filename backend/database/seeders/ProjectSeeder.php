@@ -22,7 +22,6 @@ class ProjectSeeder extends Seeder
                 'skills' => ['HTML / CSS', 'Bootstrap', 'SSH / DNS / DHCP'],
                 'is_featured' => true,
                 'order' => 0,
-                'image_asset' => 'assets/img.png', 
                 'demo_url' => 'https://smartindustry.sn/',
                 
                 
@@ -62,7 +61,6 @@ class ProjectSeeder extends Seeder
                 'skills' => ['Wazuh', 'Elastic Stack (ELK)', 'Cortex XDR', 'MISP', 'TheHive', 'Suricata', 'Yara', 'Sysmon', 'Auditd', 'VirusTotal'],
                 'is_featured' => true,
                 'order' => 4,
-                'cover_image' => 'assets/img.png',
             ],
             [
                 'title' => 'Developpement d\'une application web pour la visibilite de vente de meubles',
