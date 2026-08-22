@@ -22,7 +22,7 @@ class ProjectSeeder extends Seeder
                 'skills' => ['HTML / CSS', 'Bootstrap', 'SSH / DNS / DHCP'],
                 'is_featured' => true,
                 'order' => 0,
-                'image_asset' => 'sas-website.jpg', 
+                'image_asset' => 'assets/img.png', 
                 'demo_url' => 'https://smartindustry.sn/',
                 
                 
@@ -35,7 +35,6 @@ class ProjectSeeder extends Seeder
                 'skills' => ['Bash', 'Linux (RHEL, Ubuntu, Debian)', 'TCP/IP & Réseaux'],
                 'is_featured' => true,
                 'order' => 1,
-                'image_asset' => 'mail-server.jpg',
             ],
             [
                 'title' => 'Authentification Centralisée dans un pipeline CI/CD',
@@ -45,7 +44,6 @@ class ProjectSeeder extends Seeder
                 'skills' => ['Bash', 'Linux (RHEL, Ubuntu, Debian)', 'Windows Server', 'Keycloak', 'Docker', 'Jenkins', 'GitLab CI/CD'],
                 'is_featured' => true,
                 'order' => 2,
-                'image_asset' => 'cicd-auth.jpg',
             ],
             [
                 'title' => 'Chiffrement des données dans une BD relationnelle SQLServer',
@@ -55,7 +53,6 @@ class ProjectSeeder extends Seeder
                 'skills' => ['SQLServer', 'Cryptographie', 'OpenSSL'],
                 'is_featured' => true,
                 'order' => 3,
-                'image_asset' => 'sqlserver-encryption.jpg',
             ],
             [
                 'title' => 'Détection et réponse aux incidents dans un SOC',
@@ -65,7 +62,6 @@ class ProjectSeeder extends Seeder
                 'skills' => ['Wazuh', 'Elastic Stack (ELK)', 'Cortex XDR', 'MISP', 'TheHive', 'Suricata', 'Yara', 'Sysmon', 'Auditd', 'VirusTotal'],
                 'is_featured' => true,
                 'order' => 4,
-                'image_asset' => 'soc-incidents.jpg',
                 'cover_image' => 'assets/img.png',
             ],
             [
@@ -76,7 +72,6 @@ class ProjectSeeder extends Seeder
                 'skills' => ['html', 'css', 'javascript', 'boostrap'],
                 'is_featured' => true,
                 'order' => 5,
-                'image_asset' => 'furniture-ecommerce.jpg',
                 'demo_url' => 'https://fancy-macaron-90eecd.netlify.app/',
                 
             ]
