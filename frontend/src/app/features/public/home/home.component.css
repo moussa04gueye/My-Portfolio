@@ -426,7 +426,7 @@
   .project-card__image {
     height: 200px;
   }
-}s
+}
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
