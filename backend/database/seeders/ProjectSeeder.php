@@ -24,7 +24,7 @@ class ProjectSeeder extends Seeder
                 'order' => 0,
                 'image_asset' => 'sas-website.jpg', 
                 'demo_url' => 'https://smartindustry.sn/',
-                'github_url' => null,
+                
                 
             ],
             [
@@ -78,7 +78,7 @@ class ProjectSeeder extends Seeder
                 'order' => 5,
                 'image_asset' => 'furniture-ecommerce.jpg',
                 'demo_url' => 'https://fancy-macaron-90eecd.netlify.app/',
-                'github_url' => null,
+                
             ]
         ];
 
