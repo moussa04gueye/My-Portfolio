@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -15,17 +15,41 @@ export class NavbarComponent {
 
   links = [
     { path: '/', label: 'Accueil' },
+    { path: '/', label: 'Compétences', fragment: 'skills' },
     { path: '/projets', label: 'Projets' },
     { path: '/blog', label: 'Blog' },
     { path: '/a-propos', label: 'À propos' },
     { path: '/contact', label: 'Contact' },
-    { path: '#competences', label: 'Compétences'}
   ];
 
-  constructor() {
+  constructor(private router: Router) {
     const savedTheme = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
     const initialTheme = savedTheme === 'light' ? 'light' : 'dark';
     this.setTheme(initialTheme, false);
+  }
+
+  handleLinkClick(link: { path: string; fragment?: string }, event: Event): void {
+    this.closeMenu();
+
+    if (!link.fragment) {
+      return;
+    }
+
+    const target = document.getElementById(link.fragment);
+    if (target) {
+      event.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 96;
+      window.scrollTo({ top, behavior: 'smooth' });
+
+      if (window.location.pathname === '/') {
+        history.replaceState(null, '', `/#${link.fragment}`);
+      } else {
+        this.router.navigateByUrl(`/#${link.fragment}`);
+      }
+      return;
+    }
+
+    this.router.navigateByUrl(`/${link.fragment ? `#${link.fragment}` : ''}`);
   }
 
   toggleMenu(): void {

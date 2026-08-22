@@ -14,13 +14,14 @@
     </div>
 
     <nav class="navbar__links" [class.navbar__links--open]="isMenuOpen()">
-      @for (link of links; track link.path) {
+      @for (link of links; track link.path + '-' + link.label) {
         <a
           [routerLink]="link.path"
+          [fragment]="link.fragment || undefined"
           routerLinkActive="navbar__link--active"
           [routerLinkActiveOptions]="{ exact: link.path === '/' }"
           class="navbar__link"
-          (click)="closeMenu()"
+          (click)="handleLinkClick(link, $event)"
         >
           {{ link.label }}
         </a>
