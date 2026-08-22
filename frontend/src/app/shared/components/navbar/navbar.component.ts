@@ -19,6 +19,7 @@ export class NavbarComponent {
     { path: '/blog', label: 'Blog' },
     { path: '/a-propos', label: 'À propos' },
     { path: '/contact', label: 'Contact' },
+    { path: '#competences', label: 'Compétences'}
   ];
 
   constructor() {
