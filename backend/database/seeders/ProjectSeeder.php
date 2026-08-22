@@ -22,7 +22,7 @@ class ProjectSeeder extends Seeder
                 'skills' => ['HTML / CSS', 'Bootstrap', 'SSH / DNS / DHCP'],
                 'is_featured' => true,
                 'order' => 0,
-                'image_asset' => 'sas-website.jpg', // place le fichier dans database/seeders/assets/
+                'image_asset' => 'sas-website.jpg', 
             ],
             [
                 'title' => 'Serveur de Messagerie',
@@ -33,6 +33,7 @@ class ProjectSeeder extends Seeder
                 'is_featured' => true,
                 'order' => 1,
                 'image_asset' => 'mail-server.jpg',
+                'link' => 'https://smartindustry.sn',
             ],
             [
                 'title' => 'Authentification Centralisée dans un pipeline CI/CD',
@@ -70,9 +71,10 @@ class ProjectSeeder extends Seeder
                 'description' => 'Ce projet fait en entreprise  consiste à développer une application web pour améliorer la visibilité des ventes de meubles en utilisant des technologies modernes.',
                 'stack' => ['html', 'css', 'javascript', 'bootstrap'],
                 'skills' => ['html', 'css', 'javascript', 'boostrap'],
-                'is_featured' => false,
+                'is_featured' => true,
                 'order' => 5,
                 'image_asset' => 'furniture-ecommerce.jpg',
+                 'link' => 'https://fancy-macaron-90eecd.netlify.app',
             ]
         ];
 
