@@ -29,9 +29,42 @@
   .hero__actions {
     justify-content: center;
   }
+  .hero__text {
+    width: 100%;
+  }
+  .hero__title {
+    white-space: normal;
+  }
   .hero__photo {
     order: -1;
+    padding: 10px 0 0;
   }
+}
+
+@media (max-width: 640px) {
+  .hero__photo-frame {
+    width: min(82vw, 300px);
+  }
+
+  .hero__photo-frame::before {
+    inset: -8px;
+    filter: blur(8px);
+  }
+
+  .hero__photo-frame::after {
+    inset: -2px;
+  }
+
+  .hero__photo-frame img {
+    inset: 5px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+  }
+}
+
+.hero__text {
+  min-width: 0;
+  max-width: 680px;
 }
 
 .hero__eyebrow {
@@ -43,9 +76,14 @@
 }
 
 .hero__title {
+  display: block;
+  width: 100%;
+  max-width: 680px;
   margin-bottom: var(--space-6);
   min-height: 1.25em;
   white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .hero__title::after {
@@ -89,15 +127,12 @@
 
 .hero__photo-frame {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: min(74vw, 400px);
+  aspect-ratio: 1;
+  height: auto;
   border-radius: 50%;
   padding: 5px;
-  
-  /* On enlève la bordure simple */
   border: none;
-
-  /* Fond servant à créer l'anneau dégradé */
   background: linear-gradient(
     135deg,
     #00f5ff,
@@ -106,14 +141,11 @@
     #ff4fd8,
     #00f5ff
   );
-
-  /* Halo lumineux (reduit pour perf) */
   box-shadow:
     0 0 10px rgba(0, 245, 255, 0.7),
     0 0 28px rgba(0, 245, 255, 0.38),
     0 0 48px rgba(184, 141, 208, 0.28);
   will-change: transform, opacity;
-
   overflow: visible;
 }
 
@@ -163,21 +195,15 @@
 /* Image */
 .hero__photo-frame img {
   position: absolute;
-  inset: 4px;
-  width: calc(100% - 8px);
-  height: calc(100% - 8px);
+  inset: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
   border-radius: 50%;
   object-fit: cover;
-  
-
+  object-position: center;
   opacity: 0;
-
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
-
+  transition: opacity 0.7s ease, transform 0.7s ease;
   transform: scale(1.02);
-
   z-index: 1;
 }
 
@@ -451,4 +477,6 @@
     transform: translateX(-100%);
   }
 }
+
+
 

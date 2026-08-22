@@ -23,6 +23,9 @@ class ProjectSeeder extends Seeder
                 'is_featured' => true,
                 'order' => 0,
                 'image_asset' => 'sas-website.jpg', 
+                'demo_url' => 'https://smartindustry.sn/',
+                'github_url' => null,
+                
             ],
             [
                 'title' => 'Serveur de Messagerie',
@@ -63,6 +66,7 @@ class ProjectSeeder extends Seeder
                 'is_featured' => true,
                 'order' => 4,
                 'image_asset' => 'soc-incidents.jpg',
+                'cover_image' => 'public/storage/img.png',
             ],
             [
                 'title' => 'Developpement d\'une application web pour la visibilite de vente de meubles',
@@ -73,6 +77,8 @@ class ProjectSeeder extends Seeder
                 'is_featured' => true,
                 'order' => 5,
                 'image_asset' => 'furniture-ecommerce.jpg',
+                'demo_url' => 'https://fancy-macaron-90eecd.netlify.app/',
+                'github_url' => null,
             ]
         ];
 
