@@ -33,7 +33,6 @@ class ProjectSeeder extends Seeder
                 'is_featured' => true,
                 'order' => 1,
                 'image_asset' => 'mail-server.jpg',
-                'link' => 'https://smartindustry.sn',
             ],
             [
                 'title' => 'Authentification Centralisée dans un pipeline CI/CD',
@@ -74,7 +73,6 @@ class ProjectSeeder extends Seeder
                 'is_featured' => true,
                 'order' => 5,
                 'image_asset' => 'furniture-ecommerce.jpg',
-                 'link' => 'https://fancy-macaron-90eecd.netlify.app',
             ]
         ];
 
