@@ -49,7 +49,7 @@ class SkillSeeder extends Seeder
             ['name' => 'VirusTotal', 'category' => 'outils', 'level' => 5],
             ['name' => 'OSINT', 'category' => 'outils', 'level' => 5],
             ['name' => 'Géolocalisation', 'category' => 'outils', 'level' => 5],
-            ['name' => 'AES / DES RSA ElGamal Diffie-Hellman Codes linéaires Chiffrement affine', 'category' => 'securite', 'level' => 5]
+            ['name' => 'AES / DES RSA ElGamal Diffie-Hellman Codes linéaires Chiffrement affine', 'category' => 'securite', 'level' => 5],
             ['name' => 'SageMath', 'category' => 'outils', 'level' => 4],
             ['name' => 'OWASP Juice Shop (Docker)', 'category' => 'outils', 'level' => 5],
             ['name' => 'DVWA (Docker)', 'category' => 'outils', 'level' => 5],
