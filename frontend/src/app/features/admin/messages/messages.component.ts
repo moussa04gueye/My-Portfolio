@@ -28,7 +28,7 @@ export class MessagesComponent implements OnInit {
     this.adminMessageService.getOne(message.id).subscribe({
       next: (res) => {
         this.selected.set(res.data);
-        this.load(); // rafraîchit le statut "lu"
+        this.load(); 
       },
     });
   }
