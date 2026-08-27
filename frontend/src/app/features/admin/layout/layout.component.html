@@ -1,10 +1,21 @@
-<div class="admin-layout">
-  <aside class="admin-sidebar">
+<div class="admin-layout" [class.admin-layout--sidebar-closed]="!isSidebarOpen()">
+  <button
+    type="button"
+    class="admin-sidebar-toggle"
+    [attr.aria-expanded]="isSidebarOpen()"
+    aria-controls="admin-sidebar"
+    [attr.aria-label]="isSidebarOpen() ? 'Fermer le menu admin' : 'Ouvrir le menu admin'"
+    (click)="toggleSidebar()"
+  >
+    <span aria-hidden="true">{{ isSidebarOpen() ? '‹' : '›' }}</span>
+  </button>
+
+  <aside id="admin-sidebar" class="admin-sidebar">
     <div class="admin-sidebar__brand">Admin</div>
 
     <nav class="admin-sidebar__nav">
       @for (item of navItems; track item.path) {
-        <a [routerLink]="item.path" routerLinkActive="admin-sidebar__link--active" class="admin-sidebar__link">
+        <a [routerLink]="item.path" routerLinkActive="admin-sidebar__link--active" class="admin-sidebar__link" (click)="closeSidebar()">
           {{ item.label }}
         </a>
       }

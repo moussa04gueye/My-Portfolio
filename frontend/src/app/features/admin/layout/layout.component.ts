@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
@@ -15,6 +15,7 @@ export class AdminLayoutComponent {
   private router = inject(Router);
 
   currentUser = this.auth.currentUser;
+  isSidebarOpen = signal(true);
 
   navItems = [
     { path: '/admin/dashboard', label: 'Tableau de bord' },
@@ -32,5 +33,13 @@ export class AdminLayoutComponent {
       next: () => this.router.navigate(['/admin/login']),
       error: () => this.router.navigate(['/admin/login']),
     });
+  }
+
+  toggleSidebar(): void {
+    this.isSidebarOpen.update((isOpen) => !isOpen);
+  }
+
+  closeSidebar(): void {
+    this.isSidebarOpen.set(false);
   }
 }
