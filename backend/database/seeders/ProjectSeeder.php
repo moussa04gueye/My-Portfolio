@@ -58,7 +58,7 @@ class ProjectSeeder extends Seeder
                 'summary' => 'Ce projet consiste à mettre en place un SOC pour détecter et répondre aux incidents de sécurité.',
                 'description' => 'Ce projet fait en entreprise  consiste à mettre en place un SOC pour détecter et répondre aux incidents de sécurité en utilisant des outils tels que Wazuh, Elastic Stack (ELK), Cortex XDR, MISP, TheHive, Suricata, Yara, Sysmon, Auditd et VirusTotal.',
                 'stack' => ['Wazuh', 'Elastic Stack (ELK)', 'Cortex XDR', 'MISP', 'TheHive', 'Suricata', 'Yara', 'Sysmon', 'Auditd', 'VirusTotal'],
-                'skills' => ['Wazuh', 'Elastic Stack (ELK)', 'Cortex XDR', 'MISP', 'TheHive', 'Suricata', 'Yara', 'Sysmon', 'Auditd', 'VirusTotal'],
+                'skills' => ['Wazuh', 'Elastic Stack (ELK)', 'Cortex XDR', 'TheHive / MISP', 'Suricata', 'Yara', 'Sysmon', 'Auditd', 'VirusTotal'],
                 'is_featured' => true,
                 'order' => 4,
             ],
@@ -72,7 +72,28 @@ class ProjectSeeder extends Seeder
                 'order' => 5,
                 'demo_url' => 'https://fancy-macaron-90eecd.netlify.app/',
                 
-            ]
+            ],
+            [
+                'title' => 'Challenge OSINT',
+                'summary' => 'Résolution d\'un défi de reverse image search',
+                'description' => 'Résolution d\'un défi de reverse image search : identification d\'indices visuels pour déterminer la localisation géographique d\'une photo, dans une démarche d\'investigation numérique.',
+                'stack' => ['OSINT', 'Géolocalisation', 'Reverse Image Search'],
+                'skills' => ['OSINT', 'Géolocalisation', 'Reverse Image Search'],
+                'is_featured' => true,
+                'order' => 6,
+            ],
+            [
+            'title' => 'Challenge de Pentest',
+            'summary' => 'Résolution d\'un défi de Pentest',
+            'description' => 'Résolution d\'un défi de Pentest : identification des vulnérabilités et exploitation des failles de sécurité dans une application web, dans une démarche d\'investigation numérique.',
+            'stack' => ['Linux', 'OWASP Juice Shop (Docker)', 'DVWA (Docker)', 'WebGoat (Docker)', 'Burp Suite', 'SQLMap', 'Nikto / Dirb', 'Hydra / John the Ripper'],
+            'skills' => ['OWASP Juice Shop (Docker)', 'DVWA (Docker)', 'WebGoat (Docker)', 'Burp Suite', 'SQLMap', 'Nikto / Dirb', 'Hydra / John the Ripper'],
+            'is_featured' => true,
+            'order' => 7,
+            ],
+            
+
+
         ];
 
         foreach ($projects as $data) {
@@ -80,9 +101,6 @@ class ProjectSeeder extends Seeder
             $imageAsset = $data['image_asset'] ?? null;
             unset($data['skills'], $data['image_asset']);
 
-            // Upload de l'image bundlée dans le dépôt vers Cloudinary (stockage permanent).
-            // Le fichier source vient du repo Git (jamais perdu) ; seul l'appel d'upload
-            // est refait à chaque seed, ce qui est sans risque et peu coûteux.
             if ($imageAsset) {
                 $assetPath = database_path("seeders/assets/{$imageAsset}");
                 if (file_exists($assetPath) && config('filesystems.disks.cloudinary')) {
@@ -93,7 +111,7 @@ class ProjectSeeder extends Seeder
                             Str::slug($data['title'])
                         );
                     } catch (\Throwable $e) {
-                        // Cloudinary pas encore configuré ou erreur réseau : on continue sans image.
+                        
                     }
                 }
             }

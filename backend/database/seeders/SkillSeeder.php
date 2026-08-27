@@ -25,10 +25,10 @@ class SkillSeeder extends Seeder
             ['name' => 'Laravel', 'category' => 'framework', 'level' => 5],
             ['name' => 'HTML / CSS', 'category' => 'framework', 'level' => 5],
             ['name' => 'Bootstrap', 'category' => 'framework', 'level' => 4],
-            ['name' => 'Linux (RHEL, Ubuntu, Debian)', 'category' => 'systeme', 'level' => 5],
+            ['name' => 'Linux (RHEL, Ubuntu, Debian, Kali)', 'category' => 'systeme', 'level' => 5],
             ['name' => 'Windows Server', 'category' => 'systeme', 'level' => 5],
             ['name' => 'TCP/IP & Réseaux', 'category' => 'reseaux', 'level' => 5],
-            ['name' => 'SSH / DNS / DHCP', 'category' => 'reseaux', 'level' => 5],
+            ['name' => 'SSH / DNS / DHCP / LDAP / FTPS ', 'category' => 'reseaux', 'level' => 5],
             ['name' => 'Wazuh', 'category' => 'securite', 'level' => 5],
             ['name' => 'Elastic Stack (ELK)', 'category' => 'securite', 'level' => 3],
             ['name' => 'Suricata', 'category' => 'securite', 'level' => 5],
@@ -42,7 +42,25 @@ class SkillSeeder extends Seeder
             ['name' => 'SonarQube', 'category' => 'devops', 'level' => 3],
             ['name' => 'Git', 'category' => 'outil', 'level' => 4],
             ['name' => 'Machine Learning', 'category' => 'autre', 'level' => 2],
-             ['name' => 'Analyse SI(modelisation)', 'category' => 'Outil', 'level' => 5],
+            ['name' => 'Analyse SI(modelisation)', 'category' => 'Outil', 'level' => 5],
+            ['name' => 'Yara', 'category' => 'outils', 'level' => 5],
+            ['name' => 'Sysmon', 'category' => 'outils', 'level' => 5],
+            ['name' => 'Auditd', 'category' => 'outils', 'level' => 5],
+            ['name' => 'VirusTotal', 'category' => 'outils', 'level' => 5],
+            ['name' => 'OSINT', 'category' => 'outils', 'level' => 5],
+            ['name' => 'Géolocalisation', 'category' => 'outils', 'level' => 5],
+            ['name' => 'AES / DES RSA ElGamal Diffie-Hellman Codes linéaires Chiffrement affine', 'category' => 'securite', 'level' => 5]
+            ['name' => 'SageMath', 'category' => 'outils', 'level' => 4],
+            ['name' => 'OWASP Juice Shop (Docker)', 'category' => 'outils', 'level' => 5],
+            ['name' => 'DVWA (Docker)', 'category' => 'outils', 'level' => 5],
+            ['name' => 'WebGoat (Docker)', 'category' => 'outils', 'level' => 5],
+            ['name' => 'Burp Suite', 'category' => 'outils', 'level' => 5],
+            ['name' => 'SQLMap', 'category' => 'outils', 'level' => 5],
+            ['name' => 'Nikto / Dirb', 'category' => 'outils', 'level' => 5],
+            ['name' => 'Hydra / John the Ripper', 'category' => 'outils', 'level' => 5],
+
+
+
         ];
 
         foreach ($skills as $i => $skill) {
