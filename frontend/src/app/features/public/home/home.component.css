@@ -330,10 +330,10 @@
   flex-direction: column;
   overflow: hidden;
   min-height: 100%;
-  background: linear-gradient(180deg, rgba(12, 24, 56, 0.98), rgba(17, 31, 67, 0.95));
-  border: 1px solid rgba(125, 211, 252, 0.18);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 1.5rem;
-  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.28), inset 0 1px 0 rgba(255,255,255,0.05);
+  box-shadow: var(--shadow-md);
   transition: transform 260ms cubic-bezier(.2,.9,.2,1), box-shadow 260ms ease, border-color 260ms ease, background 260ms ease;
 }
 
@@ -348,9 +348,9 @@
 
 .project-card:hover {
   transform: translateY(-8px) scale(1.01);
-  border-color: rgba(96, 165, 250, 0.5);
-  box-shadow: 0 22px 48px rgba(14, 165, 233, 0.14), 0 14px 30px rgba(168, 85, 247, 0.14);
-  background: linear-gradient(180deg, rgba(18, 32, 72, 1), rgba(21, 38, 81, 1));
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-lg);
+  background: var(--color-surface);
 }
 
 .project-card:hover::before {
@@ -399,7 +399,7 @@
   margin: 0;
   font-size: clamp(1.15rem, 2vw, 1.5rem);
   line-height: 1.25;
-  color: #f8fbff;
+  color: var(--color-primary);
 }
 
 .project-card__body p {

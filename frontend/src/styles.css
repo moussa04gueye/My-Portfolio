@@ -1,5 +1,4 @@
 :root {
-  /* Couleurs — fond sombre marine + accent bleu électrique lumineux */
   --color-bg: #0a1330;
   --color-bg-alt: #0f1a3d;
   --color-surface: #121e45;
@@ -313,7 +312,6 @@ button {
 .blob {
   position: absolute;
   border-radius: 50%;
-  /* reduce blur for performance while keeping a soft look */
   filter: blur(60px);
   opacity: 0.32;
   z-index: 0;

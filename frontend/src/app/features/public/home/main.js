@@ -9,7 +9,7 @@ const texte = "";
             index++;
 
             if (index <= texte.length) {
-                setTimeout(ecrireTexte, 150); // vitesse d'écriture
+                setTimeout(ecrireTexte, 150); 
             } else {
                 setTimeout(() => {
                     index = 0;
