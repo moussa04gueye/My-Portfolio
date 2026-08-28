@@ -23,7 +23,7 @@ export class AboutComponent implements OnInit {
   experiences = signal<Experience[]>([]);
   education = signal<Education[]>([]);
   isLoading = signal(true);
-  cvUrl = '/cv.pdf';
+  cvUrl = '/Cv-2.pdf';
 
   ngOnInit(): void {
     forkJoin({

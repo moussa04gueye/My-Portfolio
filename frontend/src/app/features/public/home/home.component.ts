@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isLoading = signal(true);
   activeIndex = signal(0);
   photos = ['Profil.jpeg', 'prof2.jpeg','P111.png'];
-  cvUrl = '/cv.pdf';
+  cvUrl = '/Cv-2.pdf';
   typedText = signal('');
 
   private readonly heroText = 'Je sécurise, automatise et déploie des infrastructures fiables.';
